@@ -25,11 +25,6 @@ import (
 
 var log = logf.Log.WithName("controller_helloworld")
 
-/**
-* USER ACTION REQUIRED: This is a scaffold file intended for the user to modify with their own Controller
-* business logic.  Delete these comments after modifying this file.*
- */
-
 // Add creates a new HelloWorld Controller and adds it to the Manager. The Manager will set fields on the Controller
 // and Start it when the Manager is Started.
 func Add(mgr manager.Manager) error {
@@ -86,8 +81,6 @@ type ReconcileHelloWorld struct {
 
 // Reconcile reads that state of the cluster for a HelloWorld object and makes changes based on the state read
 // and what is in the HelloWorld.Spec
-// TODO(user): Modify this Reconcile function to implement your Controller logic.  This example creates
-// a Pod as an example
 // Note:
 // The Controller will requeue the Request to be processed again if the returned error is non-nil or
 // Result.Requeue is true, otherwise upon completion it will remove the work from the queue.
@@ -97,7 +90,6 @@ func (r *ReconcileHelloWorld) Reconcile(request reconcile.Request) (reconcile.Re
 
 	ctx := context.TODO()
 
-	// Fetch the HelloWorld instance
 	instance := &examplev1alpha1.HelloWorld{}
 	err := r.client.Get(context.TODO(), request.NamespacedName, instance)
 	if err != nil {
@@ -130,7 +122,6 @@ func (r *ReconcileHelloWorld) Reconcile(request reconcile.Request) (reconcile.Re
 		return reconcile.Result{}, err
 	}
 
-	// Check if this Deployment already exists
 	foundDepl := appsv1.Deployment{}
 	foundService := corev1.Service{}
 	foundIngress := extv1beta1.Ingress{}
