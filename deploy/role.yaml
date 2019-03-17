@@ -4,51 +4,25 @@ metadata:
   creationTimestamp: null
   name: helloworld-operator
 rules:
-- apiGroups:
-  - ""
-  resources:
-  - pods
-  - services
-  - endpoints
-  - persistentvolumeclaims
-  - events
-  - configmaps
-  - secrets
-  verbs:
-  - '*'
-- apiGroups:
-  - ""
-  resources:
-  - namespaces
-  verbs:
-  - get
-- apiGroups:
-  - apps
-  resources:
-  - deployments
-  - daemonsets
-  - replicasets
-  - statefulsets
-  verbs:
-  - '*'
-- apiGroups:
-  - monitoring.coreos.com
-  resources:
-  - servicemonitors
-  verbs:
-  - get
-  - create
-- apiGroups:
-  - apps
-  resourceNames:
-  - helloworld-operator
-  resources:
-  - deployments/finalizers
-  verbs:
-  - update
-- apiGroups:
-  - example.helmich.me
-  resources:
-  - '*'
-  verbs:
-  - '*'
+- apiGroups: [""]
+  resources: [services]
+  verbs: ['*']
+- apiGroups: [""]
+  resources: [namespaces]
+  verbs: [get]
+- apiGroups: [extensions]
+  resources: [ingress]
+  verbs: ['*']
+- apiGroups: [apps]
+  resources: [deployments]
+  verbs: ['*']
+- apiGroups: [monitoring.coreos.com]
+  resources: [servicemonitors]
+  verbs: [get, create]
+- apiGroups: [apps]
+  resourceNames: [helloworld-operator]
+  resources: [deployments/finalizers]
+  verbs: [update]
+- apiGroups: [example.helmich.me]
+  resources: ['*']
+  verbs: ['*']
