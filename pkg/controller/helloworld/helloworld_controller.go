@@ -206,7 +206,7 @@ func (r *ReconcileHelloWorld) buildDeployment(cr *examplev1alpha1.HelloWorld, la
 							Name:  "helloworld",
 							Image: "martinhelmich/helloworld",
 							Env: []corev1.EnvVar{
-								corev1.EnvVar{Name: "HELLOWORLD_GREETING", Value: recipient},
+								corev1.EnvVar{Name: "HELLOWORLD_RECIPIENT", Value: recipient},
 							},
 							Ports: []corev1.ContainerPort{
 								corev1.ContainerPort{Name: "http", ContainerPort: 8080},
