@@ -1,0 +1,8 @@
+apiVersion: example.helmich.me/v1alpha1
+kind: HelloWorld
+metadata:
+  name: example-helloworld
+spec:
+  replicas: 3
+  host: helloworld.helmich.me
+  recipient: World
